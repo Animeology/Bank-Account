@@ -18,9 +18,9 @@
         if (choice == 1)
         {
             Console.Write("Username:");
-            string username = Console.ReadLine();
+            string username = Console.ReadLine()!;
             Console.Write("Password:");
-            string password = Console.ReadLine();
+            string password = Console.ReadLine()!;
         }
         else if (choice == 2)
         {
@@ -35,9 +35,9 @@
         Console.WriteLine("Hello, and Welcome to our Bank. Please input your desired Username and Password");
 
         Console.Write("Username:");
-        string username = Console.ReadLine();
+        string username = Console.ReadLine()!;
         Console.Write("Password:");
-        string password = Console.ReadLine();
+        string password = Console.ReadLine()!;
 
         Console.WriteLine("Thank you for creating your acount");
     }
@@ -85,13 +85,13 @@
 
         Console.WriteLine("${0} to deposit, Do you want to confirm that?", amount);
 
-        string confirm = Console.ReadLine();
+        string confirm = Console.ReadLine()!;
 
         if(confirm == "Yes" || confirm == "yes")
         {
             balance += amount;
             Console.WriteLine("Would you like to deposit more?");
-            confirm = Console.ReadLine();
+            confirm = Console.ReadLine()!;
             if (confirm == "Yes" || confirm == "yes")
             {
                 Deposit(balance);
@@ -104,7 +104,7 @@
         else if(confirm == "No" || confirm == "no")
         {
             Console.WriteLine("Ok, would you like to deposit a different amount or quit?");
-            confirm = Console.ReadLine();
+            confirm = Console.ReadLine()!;
             if (confirm == "Yes" || confirm == "yes")
             {
                 Deposit(balance);
@@ -127,13 +127,13 @@
 
         Console.WriteLine("${0} to withdraw, Do you want to confirm that?", amount);
 
-        string confirm = Console.ReadLine();
+        string confirm = Console.ReadLine()!;
 
         if (confirm == "Yes" || confirm == "yes")
         {
             balance -= amount;
             Console.WriteLine("Would you like to withdraw more?");
-            confirm = Console.ReadLine();
+            confirm = Console.ReadLine()!;
             if (confirm == "Yes" || confirm == "yes")
             {
                 Withdraw(balance);
@@ -146,7 +146,7 @@
         else if (confirm == "No" || confirm == "no")
         {
             Console.WriteLine("Ok, would you like to withdraw a different amount or quit?");
-            confirm = Console.ReadLine();
+            confirm = Console.ReadLine()!;
             if (confirm == "Yes" || confirm == "yes")
             {
                 Withdraw(balance);
@@ -166,7 +166,7 @@
 
         Console.WriteLine("Would you like to deposit or withdraw?");
 
-        string choice = Console.ReadLine();
+        string choice = Console.ReadLine()!;
 
         if(choice == "Deposit" || choice == "deposit") 
         {

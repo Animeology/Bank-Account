@@ -13,7 +13,6 @@
 
         int choice = Convert.ToInt32(Console.ReadLine());
 
-
         if (choice == 1)
         {
             Console.Write("Username:");
@@ -45,6 +44,7 @@
     {
         Console.WriteLine("Would you like to Deposit, Withdraw, Check your Balance, or Interest rate");
 
+        int balance = 0;
 
         Console.WriteLine("1: Deposit");
         Console.WriteLine("2: Withdraw");
@@ -57,6 +57,7 @@
         switch (choice)
         {
             case 1:
+                Deposit(balance);
                 break;
             case 2:
                 break;
@@ -70,6 +71,48 @@
                 Console.WriteLine("Invalid Choice, Please select a valid choice");
                 Transaction();
                 break;
+        }
+    }
+
+    static void Deposit(int balance)
+    {
+        Console.WriteLine("How much do you want to deposit?");
+
+        Console.Write("$");
+        int amount = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("${0} to deposit, Do you want to confirm that?", amount);
+
+        string confirm = Console.ReadLine();
+
+        if(confirm == "Yes" || confirm == "yes")
+        {
+            balance += amount;
+            Console.WriteLine("Would you like to deposit more?");
+            confirm = Console.ReadLine();
+            if (confirm == "Yes" || confirm == "yes")
+            {
+                Deposit(balance);
+            }
+            else
+            {
+                Console.WriteLine("Ok, returning back to the menu");
+                Transaction();
+            }
+        }
+        else if(confirm == "No" || confirm == "no")
+        {
+            Console.WriteLine("Ok, would you like to deposit a different amount or quit?");
+            confirm = Console.ReadLine();
+            if (confirm == "Yes" || confirm == "yes")
+            {
+                Deposit(balance);
+            }
+            else
+            {
+                Console.WriteLine("Ok, returning back to the menu");
+                Transaction();
+            }
         }
     }
 }

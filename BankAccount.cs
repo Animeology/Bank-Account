@@ -57,8 +57,7 @@
         switch (choice)
         {
             case 1:
-                //Deposit(balance);
-                balance = Deposit(balance);
+                Deposit(balance);
                 break;
             case 2:
                 Withdraw(balance);
@@ -99,8 +98,7 @@
             }
             else
             {
-                Console.WriteLine("Ok, returning back to the menu");
-                Transaction(balance);
+                ReturnToMenu(balance);
             }
         }
         else if(confirm == "No" || confirm == "no")
@@ -113,8 +111,7 @@
             }
             else
             {
-                Console.WriteLine("Ok, returning back to the menu");
-                Transaction(balance);
+                ReturnToMenu(balance);
             }
         }
 
@@ -134,7 +131,7 @@
 
         if (confirm == "Yes" || confirm == "yes")
         {
-            balance += amount;
+            balance -= amount;
             Console.WriteLine("Would you like to withdraw more?");
             confirm = Console.ReadLine();
             if (confirm == "Yes" || confirm == "yes")
@@ -143,8 +140,7 @@
             }
             else
             {
-                Console.WriteLine("Ok, returning back to the menu");
-                Transaction(balance);
+                ReturnToMenu(balance);
             }
         }
         else if (confirm == "No" || confirm == "no")
@@ -157,8 +153,7 @@
             }
             else
             {
-                Console.WriteLine("Ok, returning back to the menu");
-                Transaction(balance);
+                ReturnToMenu(balance);
             }
         }
 
@@ -183,8 +178,13 @@
         }
         else
         {
-            Console.WriteLine("Ok, returning back to the menu");
-            Transaction(balance);
+            ReturnToMenu(balance);
         }
+    }
+
+    static void ReturnToMenu(int balance)
+    {
+        Console.WriteLine("Ok, returning back to the menu");
+        Transaction(balance);
     }
 }

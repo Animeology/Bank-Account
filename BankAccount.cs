@@ -57,12 +57,14 @@
         switch (choice)
         {
             case 1:
-                Deposit(balance);
+                //Deposit(balance);
+                balance = Deposit(balance);
                 break;
             case 2:
                 Withdraw(balance);
                 break;
             case 3:
+                Balance(balance);
                 break;
             case 4:
                 break;
@@ -75,7 +77,7 @@
         }
     }
 
-    static void Deposit(int balance)
+    static int Deposit(int balance)
     {
         Console.WriteLine("How much do you want to deposit?");
 
@@ -115,9 +117,11 @@
                 Transaction();
             }
         }
+
+        return balance;
     }
 
-    static void Withdraw(int balance)
+    static int Withdraw(int balance)
     {
         Console.WriteLine("What amount would you like to withdraw from your account?");
 
@@ -158,5 +162,24 @@
             }
         }
 
+        return balance;
+    }
+
+    static void Balance(int balance)
+    {
+        Console.WriteLine("Your current balance is ${0}", balance);
+
+        Console.WriteLine("Would you like to deposit or withdraw?");
+
+        string choice = Console.ReadLine();
+
+        if(choice == "Deposit" || choice == "deposit") 
+        {
+            Deposit(balance);
+        }
+        else if(choice == "Withdraw" || choice == "withdraw")
+        {
+            Withdraw(balance);
+        }
     }
 }

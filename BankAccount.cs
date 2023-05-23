@@ -7,6 +7,8 @@
 
     static void LogInAccount()
     {
+        int balance = 0;
+
         Console.WriteLine("Login or Create an account if you don't have an account");
         Console.WriteLine("1: Login");
         Console.WriteLine("2: Create");
@@ -25,7 +27,7 @@
             CreateAccount();
         }
 
-        Transaction();
+        Transaction(balance);
     }
 
     static void CreateAccount()
@@ -40,11 +42,9 @@
         Console.WriteLine("Thank you for creating your acount");
     }
 
-    static void Transaction()
+    static void Transaction(int balance)
     {
         Console.WriteLine("Would you like to Deposit, Withdraw, Check your Balance, or Interest rate");
-
-        int balance = 0;
 
         Console.WriteLine("1: Deposit");
         Console.WriteLine("2: Withdraw");
@@ -72,7 +72,7 @@
                 break;
             default:
                 Console.WriteLine("Invalid Choice, Please select a valid choice");
-                Transaction();
+                Transaction(balance);
                 break;
         }
     }
@@ -100,7 +100,7 @@
             else
             {
                 Console.WriteLine("Ok, returning back to the menu");
-                Transaction();
+                Transaction(balance);
             }
         }
         else if(confirm == "No" || confirm == "no")
@@ -114,7 +114,7 @@
             else
             {
                 Console.WriteLine("Ok, returning back to the menu");
-                Transaction();
+                Transaction(balance);
             }
         }
 
@@ -144,7 +144,7 @@
             else
             {
                 Console.WriteLine("Ok, returning back to the menu");
-                Transaction();
+                Transaction(balance);
             }
         }
         else if (confirm == "No" || confirm == "no")
@@ -158,7 +158,7 @@
             else
             {
                 Console.WriteLine("Ok, returning back to the menu");
-                Transaction();
+                Transaction(balance);
             }
         }
 
@@ -180,6 +180,11 @@
         else if(choice == "Withdraw" || choice == "withdraw")
         {
             Withdraw(balance);
+        }
+        else
+        {
+            Console.WriteLine("Ok, returning back to the menu");
+            Transaction(balance);
         }
     }
 }

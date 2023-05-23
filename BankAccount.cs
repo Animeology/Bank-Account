@@ -60,6 +60,7 @@
                 Deposit(balance);
                 break;
             case 2:
+                Withdraw(balance);
                 break;
             case 3:
                 break;
@@ -114,5 +115,48 @@
                 Transaction();
             }
         }
+    }
+
+    static void Withdraw(int balance)
+    {
+        Console.WriteLine("What amount would you like to withdraw from your account?");
+
+        Console.Write("$");
+        int amount = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("${0} to withdraw, Do you want to confirm that?", amount);
+
+        string confirm = Console.ReadLine();
+
+        if (confirm == "Yes" || confirm == "yes")
+        {
+            balance += amount;
+            Console.WriteLine("Would you like to withdraw more?");
+            confirm = Console.ReadLine();
+            if (confirm == "Yes" || confirm == "yes")
+            {
+                Withdraw(balance);
+            }
+            else
+            {
+                Console.WriteLine("Ok, returning back to the menu");
+                Transaction();
+            }
+        }
+        else if (confirm == "No" || confirm == "no")
+        {
+            Console.WriteLine("Ok, would you like to withdraw a different amount or quit?");
+            confirm = Console.ReadLine();
+            if (confirm == "Yes" || confirm == "yes")
+            {
+                Withdraw(balance);
+            }
+            else
+            {
+                Console.WriteLine("Ok, returning back to the menu");
+                Transaction();
+            }
+        }
+
     }
 }

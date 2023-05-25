@@ -69,6 +69,7 @@
                 Interest(balance);
                 break;
             case 5:
+                Quit();
                 break;
             default:
                 Console.WriteLine("Invalid Choice, Please select a valid choice");
@@ -193,7 +194,7 @@
         Console.WriteLine("Your total will be {0} in {1} year(s)", balance * interestRate, years);
 
         Console.WriteLine("Would you like to calculate again?");
-        string choice = Console.ReadLine();
+        string choice = Console.ReadLine()!;
 
         if(choice == "Yes" || choice == "yes")
         {
@@ -203,6 +204,11 @@
         {
             ReturnToMenu(balance);
         }
+    }
+
+    static void Quit()
+    {
+        Console.WriteLine("Thank you for choosing our bank! We hope to see you again!");
     }
 
     static void ReturnToMenu(int balance)

@@ -66,6 +66,7 @@
                 Balance(balance);
                 break;
             case 4:
+                Interest(balance);
                 break;
             case 5:
                 break;
@@ -175,6 +176,28 @@
         else if(choice == "Withdraw" || choice == "withdraw")
         {
             Withdraw(balance);
+        }
+        else
+        {
+            ReturnToMenu(balance);
+        }
+    }
+
+    static void Interest(int balance)
+    {
+        float interestRate = 4.5f;
+
+        Console.WriteLine("Input how many years do you want us to calculate your total money with the current interest rate.");
+        int years = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Your total will be {0} in {1} year(s)", balance * interestRate, years);
+
+        Console.WriteLine("Would you like to calculate again?");
+        string choice = Console.ReadLine();
+
+        if(choice == "Yes" || choice == "yes")
+        {
+            Interest(balance);
         }
         else
         {

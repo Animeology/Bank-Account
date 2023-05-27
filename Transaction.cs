@@ -80,7 +80,7 @@
         else if (confirm == 2)
         {
             Console.WriteLine("Ok, would you like to deposit a different amount or quit?");
-            Console.WriteLine("1: Deposit A Different Amount");
+            Console.WriteLine("1: Withdraw A Different Amount");
             Console.WriteLine("2: Quit");
 
             confirm = Convert.ToInt32(Console.ReadLine());

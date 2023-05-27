@@ -10,15 +10,17 @@
         int amount = Convert.ToInt32(Console.ReadLine());
 
         Console.WriteLine("${0} to deposit, Do you want to confirm that?", amount);
+        Console.WriteLine("1: Yes");
+        Console.WriteLine("2: No");
 
-        string confirm = Console.ReadLine()!;
+        int confirm = Convert.ToInt32(Console.ReadLine());
 
-        if (confirm == "Yes" || confirm == "yes")
+        if (confirm == 1)
         {
             balance += amount;
             Console.WriteLine("Would you like to deposit more?");
-            confirm = Console.ReadLine()!;
-            if (confirm == "Yes" || confirm == "yes")
+            confirm = Convert.ToInt32(Console.ReadLine());
+            if (confirm == 1)
             {
                 Deposit(balance);
             }
@@ -27,11 +29,14 @@
                 ReturnToMenu(balance);
             }
         }
-        else if (confirm == "No" || confirm == "no")
+        else if (confirm == 2)
         {
             Console.WriteLine("Ok, would you like to deposit a different amount or quit?");
-            confirm = Console.ReadLine()!;
-            if (confirm == "Yes" || confirm == "yes")
+            Console.WriteLine("1: Deposit A Different Amount");
+            Console.WriteLine("2: Quit");
+
+            confirm = Convert.ToInt32(Console.ReadLine());
+            if (confirm == 1)
             {
                 Deposit(balance);
             }

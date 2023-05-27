@@ -1,4 +1,6 @@
-﻿public class Account
+﻿using System.IO;
+
+public class Account
 {
     public void LogInAccount()
     {
@@ -14,11 +16,29 @@
             string username = Console.ReadLine()!;
             Console.Write("Password:");
             string password = Console.ReadLine()!;
+
+            CheckAccount(username, password);
         }
         else if (choice == 2)
         {
             CreateAccount();
         }
+    }
+
+    int CheckAccount(string username, string password)
+    {
+        string line = File.ReadAllText("Accounts.txt");
+
+        if(line != username)
+        {
+            Console.WriteLine("Invalid Username");
+        }
+        else if(line != password)
+        {
+            Console.WriteLine("Invalid Password");
+        }
+
+        return 0;
     }
 
     void CreateAccount()
@@ -29,6 +49,9 @@
         string username = Console.ReadLine()!;
         Console.Write("Password:");
         string password = Console.ReadLine()!;
+
+        File.WriteAllText("Accounts.txt", username);
+        File.WriteAllText("Accounts.txt", password);
 
         Console.WriteLine("Thank you for creating your acount");
     }

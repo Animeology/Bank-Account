@@ -57,7 +57,6 @@
         int amount = Convert.ToInt32(Console.ReadLine());
 
         Console.WriteLine("${0} to withdraw, Do you want to confirm that?", amount);
-        Console.WriteLine("${0} to deposit, Do you want to confirm that?", amount);
         Console.WriteLine("1: Yes");
         Console.WriteLine("2: No");
 
@@ -79,7 +78,7 @@
         }
         else if (confirm == 2)
         {
-            Console.WriteLine("Ok, would you like to deposit a different amount or quit?");
+            Console.WriteLine("Ok, would you like to withdraw a different amount or quit?");
             Console.WriteLine("1: Withdraw A Different Amount");
             Console.WriteLine("2: Quit");
 
@@ -102,14 +101,17 @@
         Console.WriteLine("Your current balance is ${0}", balance);
 
         Console.WriteLine("Would you like to deposit or withdraw?");
+        Console.WriteLine("1: Deposit");
+        Console.WriteLine("2: Withdraw");
+        Console.WriteLine("3: Quit");
 
-        string choice = Console.ReadLine()!;
+        int confirm = Convert.ToInt32(Console.ReadLine());
 
-        if (choice == "Deposit" || choice == "deposit")
+        if (confirm == 1)
         {
             Deposit(balance);
         }
-        else if (choice == "Withdraw" || choice == "withdraw")
+        else if (confirm == 2)
         {
             Withdraw(balance);
         }

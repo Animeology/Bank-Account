@@ -131,9 +131,9 @@
         Console.WriteLine("Your total will be {0} in {1} year(s)", balance * interestRate, years);
 
         Console.WriteLine("Would you like to calculate again?");
-        string choice = Console.ReadLine()!;
+        int choice = Convert.ToInt32(Console.ReadLine());
 
-        if (choice == "Yes" || choice == "yes")
+        if (choice == 1)
         {
             Interest(balance);
         }

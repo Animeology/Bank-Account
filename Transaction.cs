@@ -19,6 +19,9 @@
         {
             balance += amount;
             Console.WriteLine("Would you like to deposit more?");
+            Console.WriteLine("1: Yes");
+            Console.WriteLine("2: No");
+
             confirm = Convert.ToInt32(Console.ReadLine());
             if (confirm == 1)
             {
@@ -66,6 +69,9 @@
         {
             balance -= amount;
             Console.WriteLine("Would you like to withdraw more?");
+            Console.WriteLine("1: Yes");
+            Console.WriteLine("2: No");
+
             confirm = Convert.ToInt32(Console.ReadLine());
             if (confirm == 1)
             {

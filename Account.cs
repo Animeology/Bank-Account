@@ -1,4 +1,7 @@
-﻿public class Account
+﻿using System;
+using System.IO;
+
+public class Account
 {
     Transaction transaction = new Transaction();
 
@@ -32,29 +35,51 @@
             CreateAccount();
             transaction.Menu();
         }
-
     }
+
+    string usernameFile = "Usernames.txt";
+    string passwordFile = "Passwords.txt";
 
     bool CheckAccount(string username, string password)
     {
-        bool isValid = true;
+        bool isValid = false;
+        string line;
 
-        string newUsername = File.ReadAllText("Accounts.txt");
-        string newPassword = File.ReadAllText("Accounts.txt");
-
-        if (newUsername != username)
+        using (StreamReader sr = new StreamReader(usernameFile))
         {
-            Console.WriteLine("Invalid Username");
-            isValid = false;
-            Console.WriteLine("Would you like to try again");
-        }
-        else if (newPassword != password)
-        {
-            Console.WriteLine("Invalid Password");
-            isValid = false;
-            Console.WriteLine("Would you like to try again");
+            while ((line = sr.ReadLine()!) != null)
+            {
+                if (username == line)
+                {
+                    isValid = true;
+                    break;
+                }
+                else if (username != line)
+                {
+                    Console.WriteLine("Invalid Username");
+                    Console.WriteLine("Would you like to try again");
+                    break;
+                }
+            }
         }
 
+        using (StreamReader sr = new StreamReader(passwordFile))
+        {
+            while ((line = sr.ReadLine()!) != null)
+            {
+                if (line == username)
+                {
+                    isValid = true;
+                    break;
+                }
+                else if (line != password)
+                {
+                    Console.WriteLine("Invalid Password");
+                    Console.WriteLine("Would you like to try again");
+                    break;
+                }
+            }
+        }
         return isValid;
     }
 
@@ -64,11 +89,11 @@
 
         Console.Write("Username:");
         string username = Console.ReadLine()!;
-        File.AppendAllText("Accounts.txt", "Username: " + username + Environment.NewLine);
+        File.AppendAllText(usernameFile, /*"Username: " + */username + Environment.NewLine);
 
         Console.Write("Password:");
         string password = Console.ReadLine()!;
-        File.AppendAllText("Accounts.txt", "Password: " + password + Environment.NewLine);
+        File.AppendAllText(passwordFile, /* "Password: " + */password + Environment.NewLine);
 
         Console.WriteLine("Thank you for creating your acount");
     }

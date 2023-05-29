@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Transactions;
-
-public class Account
+﻿public class Account
 {
     Transaction transaction = new Transaction();
 
@@ -21,7 +18,7 @@ public class Account
             string password = Console.ReadLine()!;
 
             bool checker = CheckAccount(username, password);
-            if(checker)
+            if (checker)
             {
                 transaction.Menu();
             }
@@ -45,13 +42,13 @@ public class Account
         string newUsername = File.ReadAllText("Accounts.txt");
         string newPassword = File.ReadAllText("Accounts.txt");
 
-        if(newUsername != username)
+        if (newUsername != username)
         {
             Console.WriteLine("Invalid Username");
             isValid = false;
             Console.WriteLine("Would you like to try again");
         }
-        else if(newPassword != password)
+        else if (newPassword != password)
         {
             Console.WriteLine("Invalid Password");
             isValid = false;
@@ -68,7 +65,7 @@ public class Account
         Console.Write("Username:");
         string username = Console.ReadLine()!;
         File.AppendAllText("Accounts.txt", "Username: " + username + Environment.NewLine);
-        
+
         Console.Write("Password:");
         string password = Console.ReadLine()!;
         File.AppendAllText("Accounts.txt", "Password: " + password + Environment.NewLine);

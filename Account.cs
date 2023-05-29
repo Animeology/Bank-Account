@@ -1,7 +1,10 @@
 ﻿using System.IO;
+using System.Transactions;
 
 public class Account
 {
+    Transaction transaction = new Transaction();
+
     public void LogInAccount()
     {
         Console.WriteLine("Login or Create an account if you don't have an account");
@@ -17,29 +20,45 @@ public class Account
             Console.Write("Password:");
             string password = Console.ReadLine()!;
 
-            CheckAccount(username, password);
+            bool checker = CheckAccount(username, password);
+            if(checker)
+            {
+                transaction.Menu();
+            }
+            else
+            {
+                LogInAccount();
+            }
         }
         else if (choice == 2)
         {
             CreateAccount();
+            transaction.Menu();
         }
+
     }
 
-    int CheckAccount(string username, string password)
+    bool CheckAccount(string username, string password)
     {
+        bool isValid = true;
+
         string newUsername = File.ReadAllText("Accounts.txt");
         string newPassword = File.ReadAllText("Accounts.txt");
 
         if(newUsername != username)
         {
             Console.WriteLine("Invalid Username");
+            isValid = false;
+            Console.WriteLine("Would you like to try again");
         }
         else if(newPassword != password)
         {
             Console.WriteLine("Invalid Password");
+            isValid = false;
+            Console.WriteLine("Would you like to try again");
         }
 
-        return 0;
+        return isValid;
     }
 
     void CreateAccount()
@@ -48,11 +67,11 @@ public class Account
 
         Console.Write("Username:");
         string username = Console.ReadLine()!;
-        File.AppendAllText("Accounts.txt", username + Environment.NewLine);
+        File.AppendAllText("Accounts.txt", "Username: " + username + Environment.NewLine);
         
         Console.Write("Password:");
         string password = Console.ReadLine()!;
-        File.AppendAllText("Accounts.txt", password + Environment.NewLine);
+        File.AppendAllText("Accounts.txt", "Password: " + password + Environment.NewLine);
 
         Console.WriteLine("Thank you for creating your acount");
     }

@@ -27,13 +27,14 @@ public class Account
 
     int CheckAccount(string username, string password)
     {
-        string line = File.ReadAllText("Accounts.txt");
+        string newUsername = File.ReadAllText("Accounts.txt");
+        string newPassword = File.ReadAllText("Accounts.txt");
 
-        if(line != username)
+        if(newUsername != username)
         {
             Console.WriteLine("Invalid Username");
         }
-        else if(line != password)
+        else if(newPassword != password)
         {
             Console.WriteLine("Invalid Password");
         }
@@ -47,11 +48,11 @@ public class Account
 
         Console.Write("Username:");
         string username = Console.ReadLine()!;
+        File.AppendAllText("Accounts.txt", username + Environment.NewLine);
+        
         Console.Write("Password:");
         string password = Console.ReadLine()!;
-
-        File.WriteAllText("Accounts.txt", username);
-        File.WriteAllText("Accounts.txt", password);
+        File.AppendAllText("Accounts.txt", password + Environment.NewLine);
 
         Console.WriteLine("Thank you for creating your acount");
     }

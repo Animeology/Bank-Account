@@ -1,7 +1,5 @@
 ﻿public class Transaction
 {
-    Account acc = new Account();
-
     int Deposit(int balance)
     {
         Console.WriteLine("How much do you want to deposit?");

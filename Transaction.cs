@@ -157,10 +157,10 @@
     void ReturnToMenu(int balance)
     {
         Console.WriteLine("Ok, returning back to the menu");
-        Menu();
+        Menu(balance);
     }
 
-    public void Menu()
+    public void Menu(int balance)
     {
         Console.WriteLine("Would you like to Deposit, Withdraw, Check your Balance, or Interest rate");
 
@@ -175,10 +175,10 @@
         switch (choice)
         {
             case 1:
-                Deposit(balance);
+                balance = Deposit(balance);
                 break;
             case 2:
-                Withdraw(balance);
+                balance = Withdraw(balance);
                 break;
             case 3:
                 Balance(balance);
@@ -191,7 +191,7 @@
                 break;
             default:
                 Console.WriteLine("Invalid Choice, Please select a valid choice");
-                Menu();
+                Menu(balance);
                 break;
         }
 

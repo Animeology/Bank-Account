@@ -36,6 +36,11 @@
             CreateAccount();
             transaction.Menu(balance);
         }
+        else
+        {
+            Console.WriteLine("Invalid Input");
+            transaction.Menu(balance);
+        }
     }
 
     bool CheckAccount(string username, string password, string file)

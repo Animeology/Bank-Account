@@ -46,6 +46,11 @@
                 ReturnToMenu(balance);
             }
         }
+        else
+        {
+            Console.WriteLine("Invalid Input");
+            Deposit(balance);
+        }
 
         return balance;
     }
@@ -96,6 +101,11 @@
                 ReturnToMenu(balance);
             }
         }
+        else
+        {
+            Console.WriteLine("Invalid Input");
+            Withdraw(balance);
+        }
 
         return balance;
     }
@@ -111,17 +121,20 @@
 
         int confirm = Convert.ToInt32(Console.ReadLine());
 
-        if (confirm == 1)
+        while(confirm != 1 || confirm != 2 || confirm != 3) 
         {
-            Deposit(balance);
-        }
-        else if (confirm == 2)
-        {
-            Withdraw(balance);
-        }
-        else
-        {
-            ReturnToMenu(balance);
+            if (confirm == 1)
+            {
+                Deposit(balance);
+            }
+            else if (confirm == 2)
+            {
+                Withdraw(balance);
+            }
+            else if (confirm == 3)
+            {
+                ReturnToMenu(balance);
+            }
         }
     }
 
@@ -139,13 +152,16 @@
         Console.WriteLine("1: Yes");
         Console.WriteLine("2: No");
 
-        if (choice == 1)
+        while (choice != 1 || choice != 2)
         {
-            Interest(balance);
-        }
-        else
-        {
-            ReturnToMenu(balance);
+            if (choice == 1)
+            {
+                Interest(balance);
+            }
+            else if (choice == 2)
+            {
+                ReturnToMenu(balance);
+            }
         }
     }
 

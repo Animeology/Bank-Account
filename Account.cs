@@ -55,7 +55,7 @@
                     isValid = true;
                     break;
                 }
-                else if (username != line)
+                else if (username != line || line == null)
                 {
                     Console.WriteLine("Invalid Username");
                     Console.WriteLine("Would you like to try again");
@@ -73,7 +73,7 @@
                     isValid = true;
                     break;
                 }
-                else if (line != password)
+                else if (line != password || line == null)
                 {
                     Console.WriteLine("Invalid Password");
                     Console.WriteLine("Would you like to try again");

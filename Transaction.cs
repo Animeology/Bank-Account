@@ -48,7 +48,8 @@
         }
 
         string usernameFile = "Usernames.txt";
-        File.AppendAllText(usernameFile, Convert.ToString(balance));
+        File.AppendAllText(usernameFile, Convert.ToString(balance) + Environment.NewLine);
+
 
         return balance;
     }
@@ -101,7 +102,7 @@
         }
 
         string usernameFile = "Usernames.txt";
-        File.AppendAllText(usernameFile, Convert.ToString(balance));
+        File.AppendAllText(usernameFile, Convert.ToString(balance) + Environment.NewLine);
 
         return balance;
     }
@@ -142,6 +143,8 @@
 
         Console.WriteLine("Would you like to calculate again?");
         int choice = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("1: Yes");
+        Console.WriteLine("2: No");
 
         if (choice == 1)
         {

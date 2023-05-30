@@ -12,7 +12,6 @@
 
         int choice = Convert.ToInt32(Console.ReadLine());
 
-
         if (choice == 1)
         {
             Console.Write("Username:");
@@ -20,8 +19,9 @@
             Console.Write("Password:");
             string password = Console.ReadLine()!;
 
-            bool checker = CheckAccount(username, password);
-            balance = CheckBalance();
+            string userFile = username + ".txt";
+            bool checker = CheckAccount(username, password, userFile);
+            balance = CheckBalance(userFile);
             if (checker)
             {
                 transaction.Menu(balance);
@@ -38,58 +38,45 @@
         }
     }
 
-    string usernameFile = "Usernames.txt";
-    string passwordFile = "Passwords.txt";
-
-    bool CheckAccount(string username, string password)
+    bool CheckAccount(string username, string password, string file)
     {
         bool isValid = false;
         string line;
 
-        using (StreamReader sr = new StreamReader(usernameFile))
+        if ((username + ".txt") == file)
         {
-            while ((line = sr.ReadLine()!) != null)
+            using (StreamReader sr = new StreamReader(file))
             {
-                if (username == line)
+                while ((line = sr.ReadLine()!) != null)
                 {
-                    isValid = true;
-                    break;
-                }
-                else if (username != line || line == null)
-                {
-                    Console.WriteLine("Invalid Username");
-                    Console.WriteLine("Would you like to try again");
-                    break;
+                    if (password == line)
+                    {
+                        isValid = true;
+                        break;
+                    }
+                    if (password != line)
+                    {
+                        Console.WriteLine("Invalid Password");
+                        LogInAccount();
+                        break;
+                    }
                 }
             }
         }
-
-        using (StreamReader sr = new StreamReader(passwordFile))
+        else
         {
-            while ((line = sr.ReadLine()!) != null)
-            {
-                if (line == password)
-                {
-                    isValid = true;
-                    break;
-                }
-                else if (line != password || line == null)
-                {
-                    Console.WriteLine("Invalid Password");
-                    Console.WriteLine("Would you like to try again");
-                    break;
-                }
-            }
+            Console.WriteLine("Invalid Username");
+            LogInAccount();
         }
 
         return isValid;
     }
 
-    int CheckBalance()
+    int CheckBalance(string file)
     {
         string line;
 
-        using (StreamReader sr = new StreamReader(usernameFile))
+        using (StreamReader sr = new StreamReader(file))
         {
             while ((line = sr.ReadLine()!) != null)
             {
@@ -99,20 +86,21 @@
         return balance;
     }
 
-    void CreateAccount()
+    string CreateAccount()
     {
         Console.WriteLine("Hello, and Welcome to our Bank. Please input your desired Username and Password");
 
         Console.Write("Username:");
         string username = Console.ReadLine()!;
-        File.AppendAllText(usernameFile, username + Environment.NewLine);
-
         Console.Write("Password:");
         string password = Console.ReadLine()!;
-        File.AppendAllText(passwordFile, password + Environment.NewLine);
 
-        File.AppendAllText(usernameFile, Convert.ToString(balance) + Environment.NewLine);
+        string userFile = username + ".txt";
+        File.AppendAllText(userFile, password + Environment.NewLine);
+        File.AppendAllText(userFile, balance + Environment.NewLine);
 
         Console.WriteLine("Thank you for creating your acount");
+
+        return username;
     }
 }

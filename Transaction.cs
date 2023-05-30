@@ -1,5 +1,7 @@
 ﻿public class Transaction
 {
+    Account acc = new Account();
+
     int Deposit(int balance)
     {
         Console.WriteLine("How much do you want to deposit?");
@@ -46,10 +48,6 @@
                 ReturnToMenu(balance);
             }
         }
-
-        string usernameFile = "Usernames.txt";
-        File.AppendAllText(usernameFile, Convert.ToString(balance) + Environment.NewLine);
-
 
         return balance;
     }
@@ -100,9 +98,6 @@
                 ReturnToMenu(balance);
             }
         }
-
-        string usernameFile = "Usernames.txt";
-        File.AppendAllText(usernameFile, Convert.ToString(balance) + Environment.NewLine);
 
         return balance;
     }

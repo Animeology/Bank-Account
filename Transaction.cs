@@ -1,7 +1,5 @@
 ﻿public class Transaction
 {
-    int balance = 0;
-
     int Deposit(int balance)
     {
         Console.WriteLine("How much do you want to deposit?");
@@ -48,6 +46,9 @@
                 ReturnToMenu(balance);
             }
         }
+
+        string usernameFile = "Usernames.txt";
+        File.AppendAllText(usernameFile, Convert.ToString(balance));
 
         return balance;
     }
@@ -98,6 +99,9 @@
                 ReturnToMenu(balance);
             }
         }
+
+        string usernameFile = "Usernames.txt";
+        File.AppendAllText(usernameFile, Convert.ToString(balance));
 
         return balance;
     }
@@ -175,10 +179,10 @@
         switch (choice)
         {
             case 1:
-                balance = Deposit(balance);
+                Deposit(balance);
                 break;
             case 2:
-                balance = Withdraw(balance);
+                Withdraw(balance);
                 break;
             case 3:
                 Balance(balance);

@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
-
-public class Account
+﻿public class Account
 {
     Transaction transaction = new Transaction();
+
+    int balance = 0;
 
     public void LogInAccount()
     {
@@ -13,6 +12,7 @@ public class Account
 
         int choice = Convert.ToInt32(Console.ReadLine());
 
+
         if (choice == 1)
         {
             Console.Write("Username:");
@@ -21,9 +21,10 @@ public class Account
             string password = Console.ReadLine()!;
 
             bool checker = CheckAccount(username, password);
+            balance = CheckBalance();
             if (checker)
             {
-                transaction.Menu();
+                transaction.Menu(balance);
             }
             else
             {
@@ -33,7 +34,7 @@ public class Account
         else if (choice == 2)
         {
             CreateAccount();
-            transaction.Menu();
+            transaction.Menu(balance);
         }
     }
 
@@ -67,7 +68,7 @@ public class Account
         {
             while ((line = sr.ReadLine()!) != null)
             {
-                if (line == username)
+                if (line == password)
                 {
                     isValid = true;
                     break;
@@ -80,7 +81,22 @@ public class Account
                 }
             }
         }
+
         return isValid;
+    }
+
+    int CheckBalance()
+    {
+        string line;
+
+        using (StreamReader sr = new StreamReader(usernameFile))
+        {
+            while ((line = sr.ReadLine()!) != null)
+            {
+                balance = int.Parse(sr.ReadLine()!);
+            }
+        }
+        return balance;
     }
 
     void CreateAccount()
@@ -89,11 +105,13 @@ public class Account
 
         Console.Write("Username:");
         string username = Console.ReadLine()!;
-        File.AppendAllText(usernameFile, /*"Username: " + */username + Environment.NewLine);
+        File.AppendAllText(usernameFile, username + Environment.NewLine);
 
         Console.Write("Password:");
         string password = Console.ReadLine()!;
-        File.AppendAllText(passwordFile, /* "Password: " + */password + Environment.NewLine);
+        File.AppendAllText(passwordFile, password + Environment.NewLine);
+
+        File.AppendAllText(usernameFile, Convert.ToString(balance) + Environment.NewLine);
 
         Console.WriteLine("Thank you for creating your acount");
     }

@@ -13,45 +13,44 @@
 
         int confirm = Convert.ToInt32(Console.ReadLine());
 
-        if (confirm == 1)
+        switch (confirm)
         {
-            balance += amount;
-            Console.WriteLine("Would you like to deposit more?");
-            Console.WriteLine("1: Yes");
-            Console.WriteLine("2: No");
+            case 1:
+                balance += amount;
+                Console.WriteLine("Would you like to deposit more?");
+                Console.WriteLine("1: Yes");
+                Console.WriteLine("2: No");
 
-            confirm = Convert.ToInt32(Console.ReadLine());
-            if (confirm == 1)
-            {
+                confirm = Convert.ToInt32(Console.ReadLine());
+                if (confirm == 1)
+                {
+                    Deposit(balance);
+                }
+                else
+                {
+                    ReturnToMenu(balance);
+                }
+                break;
+            case 2:
+                Console.WriteLine("Ok, would you like to deposit a different amount or quit?");
+                Console.WriteLine("1: Deposit A Different Amount");
+                Console.WriteLine("2: Quit");
+
+                confirm = Convert.ToInt32(Console.ReadLine());
+                if (confirm == 1)
+                {
+                    Deposit(balance);
+                }
+                else
+                {
+                    ReturnToMenu(balance);
+                }
+                break;
+            default:
+                Console.WriteLine("Invalid Input");
                 Deposit(balance);
-            }
-            else
-            {
-                ReturnToMenu(balance);
-            }
+                break;
         }
-        else if (confirm == 2)
-        {
-            Console.WriteLine("Ok, would you like to deposit a different amount or quit?");
-            Console.WriteLine("1: Deposit A Different Amount");
-            Console.WriteLine("2: Quit");
-
-            confirm = Convert.ToInt32(Console.ReadLine());
-            if (confirm == 1)
-            {
-                Deposit(balance);
-            }
-            else
-            {
-                ReturnToMenu(balance);
-            }
-        }
-        else
-        {
-            Console.WriteLine("Invalid Input");
-            Deposit(balance);
-        }
-
         return balance;
     }
 
@@ -68,45 +67,44 @@
 
         int confirm = Convert.ToInt32(Console.ReadLine());
 
-        if (confirm == 1)
+        switch (confirm)
         {
-            balance -= amount;
-            Console.WriteLine("Would you like to withdraw more?");
-            Console.WriteLine("1: Yes");
-            Console.WriteLine("2: No");
+            case 1:
+                balance -= amount;
+                Console.WriteLine("Would you like to withdraw more?");
+                Console.WriteLine("1: Yes");
+                Console.WriteLine("2: No");
 
-            confirm = Convert.ToInt32(Console.ReadLine());
-            if (confirm == 1)
-            {
+                confirm = Convert.ToInt32(Console.ReadLine());
+                if (confirm == 1)
+                {
+                    Withdraw(balance);
+                }
+                else
+                {
+                    ReturnToMenu(balance);
+                }
+                break;
+            case 2:
+                Console.WriteLine("Ok, would you like to withdraw a different amount or quit?");
+                Console.WriteLine("1: Withdraw A Different Amount");
+                Console.WriteLine("2: Quit");
+
+                confirm = Convert.ToInt32(Console.ReadLine());
+                if (confirm == 1)
+                {
+                    Withdraw(balance);
+                }
+                else
+                {
+                    ReturnToMenu(balance);
+                }
+                break;
+            default:
+                Console.WriteLine("Invalid Input");
                 Withdraw(balance);
-            }
-            else
-            {
-                ReturnToMenu(balance);
-            }
+                break;
         }
-        else if (confirm == 2)
-        {
-            Console.WriteLine("Ok, would you like to withdraw a different amount or quit?");
-            Console.WriteLine("1: Withdraw A Different Amount");
-            Console.WriteLine("2: Quit");
-
-            confirm = Convert.ToInt32(Console.ReadLine());
-            if (confirm == 1)
-            {
-                Withdraw(balance);
-            }
-            else
-            {
-                ReturnToMenu(balance);
-            }
-        }
-        else
-        {
-            Console.WriteLine("Invalid Input");
-            Withdraw(balance);
-        }
-
         return balance;
     }
 
@@ -121,20 +119,21 @@
 
         int confirm = Convert.ToInt32(Console.ReadLine());
 
-        while(confirm != 1 || confirm != 2 || confirm != 3) 
+        switch (confirm)
         {
-            if (confirm == 1)
-            {
+            case 1:
                 Deposit(balance);
-            }
-            else if (confirm == 2)
-            {
+                break;
+            case 2:
                 Withdraw(balance);
-            }
-            else if (confirm == 3)
-            {
+                break;
+            case 3:
                 ReturnToMenu(balance);
-            }
+                break;
+            default:
+                Console.WriteLine("Invalid Input");
+                Balance(balance);
+                break;
         }
     }
 
@@ -152,30 +151,20 @@
         Console.WriteLine("1: Yes");
         Console.WriteLine("2: No");
 
-        while (choice != 1 || choice != 2)
+        switch(choice)
         {
-            if (choice == 1)
-            {
+            case 1:
                 Interest(balance);
-            }
-            else if (choice == 2)
-            {
+                break;
+            case 2:
                 ReturnToMenu(balance);
-            }
+                break;
+            default:
+                Console.WriteLine("Invalid Input");
+                Interest(balance);
+                break;
         }
     }
-
-    void Quit()
-    {
-        Console.WriteLine("Thank you for choosing our bank! We hope to see you again!");
-    }
-
-    void ReturnToMenu(int balance)
-    {
-        Console.WriteLine("Ok, returning back to the menu");
-        Menu(balance);
-    }
-
     public void Menu(int balance)
     {
         Console.WriteLine("Would you like to Deposit, Withdraw, Check your Balance, or Interest rate");
@@ -210,6 +199,17 @@
                 Menu(balance);
                 break;
         }
-
     }
+
+    void Quit()
+    {
+        Console.WriteLine("Thank you for choosing our bank! We hope to see you again!");
+    }
+
+    void ReturnToMenu(int balance)
+    {
+        Console.WriteLine("Ok, returning back to the menu");
+        Menu(balance);
+    }
+
 }

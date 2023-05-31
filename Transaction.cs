@@ -1,6 +1,8 @@
-﻿public class Transaction
+﻿using System.Text.RegularExpressions;
+
+public class Transaction
 {
-    int Deposit(int balance)
+    void Deposit(int balance, string file)
     {
         Console.WriteLine("How much do you want to deposit?");
 
@@ -24,11 +26,11 @@
                 confirm = Convert.ToInt32(Console.ReadLine());
                 if (confirm == 1)
                 {
-                    Deposit(balance);
+                    Deposit(balance, file);
                 }
                 else
                 {
-                    ReturnToMenu(balance);
+                    ReturnToMenu(balance, file);
                 }
                 break;
             case 2:
@@ -39,22 +41,21 @@
                 confirm = Convert.ToInt32(Console.ReadLine());
                 if (confirm == 1)
                 {
-                    Deposit(balance);
+                    Deposit(balance, file);
                 }
                 else
                 {
-                    ReturnToMenu(balance);
+                    ReturnToMenu(balance, file);
                 }
                 break;
             default:
                 Console.WriteLine("Invalid Input");
-                Deposit(balance);
+                Deposit(balance, file);
                 break;
         }
-        return balance;
     }
 
-    int Withdraw(int balance)
+    void Withdraw(int balance, string file)
     {
         Console.WriteLine("What amount would you like to withdraw from your account?");
 
@@ -78,11 +79,11 @@
                 confirm = Convert.ToInt32(Console.ReadLine());
                 if (confirm == 1)
                 {
-                    Withdraw(balance);
+                    Withdraw(balance, file);
                 }
                 else
                 {
-                    ReturnToMenu(balance);
+                    ReturnToMenu(balance, file);
                 }
                 break;
             case 2:
@@ -93,22 +94,21 @@
                 confirm = Convert.ToInt32(Console.ReadLine());
                 if (confirm == 1)
                 {
-                    Withdraw(balance);
+                    Withdraw(balance, file);
                 }
                 else
                 {
-                    ReturnToMenu(balance);
+                    ReturnToMenu(balance, file);
                 }
                 break;
             default:
                 Console.WriteLine("Invalid Input");
-                Withdraw(balance);
+                Withdraw(balance, file);
                 break;
         }
-        return balance;
     }
 
-    void Balance(int balance)
+    void Balance(int balance, string file)
     {
         Console.WriteLine("Your current balance is ${0}", balance);
 
@@ -122,22 +122,22 @@
         switch (confirm)
         {
             case 1:
-                Deposit(balance);
+                Deposit(balance, file);
                 break;
             case 2:
-                Withdraw(balance);
+                Withdraw(balance, file);
                 break;
             case 3:
-                ReturnToMenu(balance);
+                ReturnToMenu(balance, file);
                 break;
             default:
                 Console.WriteLine("Invalid Input");
-                Balance(balance);
+                Balance(balance, file);
                 break;
         }
     }
 
-    void Interest(int balance)
+    void Interest(int balance, string file)
     {
         float interestRate = 4.5f;
 
@@ -154,18 +154,18 @@
         switch(choice)
         {
             case 1:
-                Interest(balance);
+                Interest(balance, file);
                 break;
             case 2:
-                ReturnToMenu(balance);
+                ReturnToMenu(balance, file);
                 break;
             default:
                 Console.WriteLine("Invalid Input");
-                Interest(balance);
+                Interest(balance, file);
                 break;
         }
     }
-    public void Menu(int balance)
+    public void Menu(int balance, string file)
     {
         Console.WriteLine("Would you like to Deposit, Withdraw, Check your Balance, or Interest rate");
 
@@ -180,23 +180,23 @@
         switch (choice)
         {
             case 1:
-                Deposit(balance);
+                Deposit(balance, file);
                 break;
             case 2:
-                Withdraw(balance);
+                Withdraw(balance, file);
                 break;
             case 3:
-                Balance(balance);
+                Balance(balance, file);
                 break;
             case 4:
-                Interest(balance);
+                Interest(balance, file);
                 break;
             case 5:
                 Quit();
                 break;
             default:
                 Console.WriteLine("Invalid Choice, Please select a valid choice");
-                Menu(balance);
+                Menu(balance, file);
                 break;
         }
     }
@@ -206,10 +206,10 @@
         Console.WriteLine("Thank you for choosing our bank! We hope to see you again!");
     }
 
-    void ReturnToMenu(int balance)
+    void ReturnToMenu(int balance, string file)
     {
         Console.WriteLine("Ok, returning back to the menu");
-        Menu(balance);
+        Menu(balance, file);
     }
 
 }

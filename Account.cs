@@ -12,34 +12,34 @@
 
         int choice = Convert.ToInt32(Console.ReadLine());
 
-        if (choice == 1)
+        switch(choice)
         {
-            Console.Write("Username:");
-            string username = Console.ReadLine()!;
-            Console.Write("Password:");
-            string password = Console.ReadLine()!;
+            case 1:
+                Console.Write("Username:");
+                string username = Console.ReadLine()!;
+                Console.Write("Password:");
+                string password = Console.ReadLine()!;
 
-            string userFile = username + ".txt";
-            bool checker = CheckAccount(username, password, userFile);
-            balance = CheckBalance(userFile);
-            if (checker)
-            {
+                string userFile = username + ".txt";
+                bool checker = CheckAccount(username, password, userFile);
+                balance = CheckBalance(userFile);
+                if (checker)
+                {
+                    transaction.Menu(balance);
+                }
+                else
+                {
+                    LogInAccount();
+                }
+                break;
+            case 2:
+                CreateAccount();
                 transaction.Menu(balance);
-            }
-            else
-            {
-                LogInAccount();
-            }
-        }
-        else if (choice == 2)
-        {
-            CreateAccount();
-            transaction.Menu(balance);
-        }
-        else
-        {
-            Console.WriteLine("Invalid Input");
-            transaction.Menu(balance);
+                break;
+            case 3:
+                Console.WriteLine("Invalid Input");
+                transaction.Menu(balance);
+                break;
         }
     }
 

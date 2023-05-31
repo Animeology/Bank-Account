@@ -23,22 +23,26 @@
                 string userFile = username + ".txt";
                 bool checker = CheckAccount(username, password, userFile);
                 balance = CheckBalance(userFile);
+
                 if (checker)
                 {
-                    transaction.Menu(balance);
+                    transaction.Menu(balance, userFile);
                 }
                 else
                 {
+                    Console.WriteLine("Incorrect username/password. Try again");
                     LogInAccount();
                 }
                 break;
             case 2:
-                CreateAccount();
-                transaction.Menu(balance);
+                username = CreateAccount();
+                userFile = username + ".txt";
+                transaction.Menu(balance, userFile);
                 break;
-            case 3:
+            default:
+                string nothing = " ";
                 Console.WriteLine("Invalid Input");
-                transaction.Menu(balance);
+                transaction.Menu(balance, nothing);
                 break;
         }
     }

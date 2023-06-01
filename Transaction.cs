@@ -53,6 +53,24 @@ public class Transaction
                 Deposit(balance, file);
                 break;
         }
+
+        string path = "C:\\Users\\josep\\GitHub\\source\\Bank-Account\\bin\\Debug\\net7.0\\" + file;
+        string pattern = @"\d+";
+
+        string line;
+
+        using (StreamReader sr = new StreamReader(path))
+        {
+            line = sr.ReadToEnd();
+        }
+
+        Regex regex = new Regex(pattern);
+
+        using(StreamWriter sw = new StreamWriter(path))
+        {
+            string content = regex.Replace(line, balance.ToString());
+            sw.Write(content);
+        }
     }
 
     void Withdraw(int balance, string file)
@@ -106,6 +124,25 @@ public class Transaction
                 Withdraw(balance, file);
                 break;
         }
+
+        string path = "C:\\Users\\josep\\GitHub\\source\\Bank-Account\\bin\\Debug\\net7.0\\" + file;
+        string pattern = @"\d+";
+
+        string line;
+
+        using (StreamReader sr = new StreamReader(path))
+        {
+            line = sr.ReadToEnd();
+        }
+
+        Regex regex = new Regex(pattern);
+
+        using (StreamWriter sw = new StreamWriter(path))
+        {
+            string content = regex.Replace(line, balance.ToString());
+            sw.Write(content);
+        }
+
     }
 
     void Balance(int balance, string file)
@@ -139,17 +176,22 @@ public class Transaction
 
     void Interest(int balance, string file)
     {
-        float interestRate = 4.5f;
+        Console.WriteLine("What is your Interest Rate?");
+        Console.Write("Rate: ");
+        float rate = float.Parse(Console.ReadLine()!);
 
         Console.WriteLine("Input how many years do you want us to calculate your total money with the current interest rate.");
+        Console.Write("Years: ");
         int years = Convert.ToInt32(Console.ReadLine());
 
-        Console.WriteLine("Your total will be {0} in {1} year(s)", balance * interestRate, years);
+        float total = (balance * rate) * years;
+
+        Console.WriteLine("Your total will be {0} in {1} year(s)", total, years);
 
         Console.WriteLine("Would you like to calculate again?");
-        int choice = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("1: Yes");
         Console.WriteLine("2: No");
+        int choice = Convert.ToInt32(Console.ReadLine());
 
         switch(choice)
         {

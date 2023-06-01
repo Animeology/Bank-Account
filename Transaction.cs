@@ -66,7 +66,7 @@ public class Transaction
 
         Regex regex = new Regex(pattern);
 
-        using(StreamWriter sw = new StreamWriter(path))
+        using (StreamWriter sw = new StreamWriter(path))
         {
             string content = regex.Replace(line, balance.ToString());
             sw.Write(content);
@@ -193,7 +193,7 @@ public class Transaction
         Console.WriteLine("2: No");
         int choice = Convert.ToInt32(Console.ReadLine());
 
-        switch(choice)
+        switch (choice)
         {
             case 1:
                 Interest(balance, file);

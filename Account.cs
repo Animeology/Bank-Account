@@ -12,7 +12,7 @@
 
         int choice = Convert.ToInt32(Console.ReadLine());
 
-        switch(choice)
+        switch (choice)
         {
             case 1:
                 Console.Write("Username:");

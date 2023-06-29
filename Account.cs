@@ -4,7 +4,10 @@
     {
         Transaction transaction = new Transaction();
 
-        int balance = 0;
+        public int balance = 0;
+        public string? username;
+        public string? password;
+        public string? userFile;
 
         public void LogInAccount()
         {
@@ -18,11 +21,11 @@
             {
                 case 1:
                     Console.Write("Username:");
-                    string username = Console.ReadLine()!;
+                    username = Console.ReadLine()!;
                     Console.Write("Password:");
-                    string password = Console.ReadLine()!;
+                    password = Console.ReadLine()!;
 
-                    string userFile = username + ".txt";
+                    userFile = username + ".txt";
                     bool checker = CheckAccount(username, password, userFile);
                     balance = CheckBalance(userFile);
 
@@ -49,7 +52,7 @@
             }
         }
 
-        bool CheckAccount(string username, string password, string file)
+        public bool CheckAccount(string username, string password, string file)
         {
             bool isValid = false;
             string line;

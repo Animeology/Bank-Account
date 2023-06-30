@@ -106,14 +106,29 @@
 
             Console.Write("Username:");
             string username = Console.ReadLine()!;
-            Console.Write("Password:");
-            string password = Console.ReadLine()!;
 
             string userFile = username + ".txt";
-            File.AppendAllText(userFile, password + Environment.NewLine);
-            File.AppendAllText(userFile, balance + Environment.NewLine);
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, userFile);
 
-            Console.WriteLine("Thank you for creating your acount");
+            if(!File.Exists(filePath))
+            {
+                Console.Write("Password:");
+                string password = Console.ReadLine()!;
+
+                File.AppendAllText(userFile, password + Environment.NewLine);
+                File.AppendAllText(userFile, balance + Environment.NewLine);
+
+                Console.WriteLine("Thank you for creating your acount");
+
+
+                return username;
+            }
+            else
+            {
+                Console.WriteLine("This username exists in our Bank Database. Please either choose another one.");
+                username = string.Empty;
+                CreateAccount();
+            }
 
             return username;
         }

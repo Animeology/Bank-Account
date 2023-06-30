@@ -52,13 +52,11 @@ namespace Bank_Account
         {
             // Assign
             string username = "joseph";
-            string password = "nguyen";
             string file = username + ".txt";
             int expectedBalance = 1000;
 
             // Act
             Account mockAcc = new Account();
-            mockAcc.CheckAccount(username, password, file);
             int actualBalance = mockAcc.CheckBalance(file);
 
             // Assert
@@ -72,11 +70,59 @@ namespace Bank_Account
             }
         }
 
+        static void CreateAccount_ValidUsername_ReturnTrue()
+        {
+            // Assign
+            string username = "animeology";
+
+            // Act
+            Account mockAcc = new Account();
+            string actualUser = mockAcc.CreateAccount();
+
+            // Assert
+            if(actualUser == username)
+            {
+                Console.WriteLine("Test for CreateAccount_ValidUsername_ReturnTrue succeeded");
+            }
+            else
+            {
+                Console.WriteLine("Test for CreateAccount_ValidUsername_ReturnTrue failed");
+            }
+        }
+
+        static void CreateAccount_InValidUsername_ReturnFalse()
+        {
+            // Assign
+            string username = "animeology";
+
+            // Act
+            Account mockAcc = new Account();
+            string actualUser = mockAcc.CreateAccount();
+
+            // Assert
+            if (actualUser != username)
+            {
+                Console.WriteLine("Test for CreateAccount_InValidUsername_ReturnFalse succeeded");
+            }
+            else
+            {
+                Console.WriteLine("Test for CreateAccount_InValidUsername_ReturnFalse failed");
+            }
+        }
+
+
         static void Main(string[] args)
         {
             CheckAccount_WrongPassword_ReturnFalse();
+            Console.WriteLine();
             CheckAccount_CorrectPassword_ReturnTrue();
+            Console.WriteLine();
             CheckBalance_CorrectBalance_ReturnTrue();
+            Console.WriteLine();
+            CreateAccount_ValidUsername_ReturnTrue();
+            Console.WriteLine();
+            CreateAccount_InValidUsername_ReturnFalse();
+            Console.WriteLine();
         }
     }
 }

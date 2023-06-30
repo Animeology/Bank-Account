@@ -100,7 +100,7 @@
             return balance;
         }
 
-        string CreateAccount()
+        public string CreateAccount()
         {
             Console.WriteLine("Hello, and Welcome to our Bank. Please input your desired Username and Password");
 

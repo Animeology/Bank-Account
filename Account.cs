@@ -70,8 +70,8 @@
                         }
                         if (password != line)
                         {
-                            return isValid;
-                            //Console.WriteLine("Invalid Password");
+                            Console.WriteLine("Invalid Password");
+                            break;
                             //LogInAccount();
                         }
                     }
@@ -120,14 +120,13 @@
 
                 Console.WriteLine("Thank you for creating your acount");
 
-
                 return username;
             }
             else
             {
                 Console.WriteLine("This username exists in our Bank Database. Please either choose another one.");
                 username = string.Empty;
-                CreateAccount();
+                //CreateAccount();
             }
 
             return username;

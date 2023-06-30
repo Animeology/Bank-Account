@@ -70,9 +70,7 @@ namespace Bank_Account
             {
                 Console.WriteLine("Test for CheckBalance_CorrectBalance_ReturnTrue failed");
             }
-
         }
-
 
         static void Main(string[] args)
         {

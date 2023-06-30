@@ -45,7 +45,7 @@
                     transaction.Menu(balance, userFile);
                     break;
                 default:
-                    string nothing = " ";
+                    string nothing = string.Empty;
                     Console.WriteLine("Invalid Input");
                     transaction.Menu(balance, nothing);
                     break;
@@ -66,13 +66,13 @@
                         if (password == line)
                         {
                             isValid = true;
-                            break;
+                            return isValid;
                         }
                         if (password != line)
                         {
-                            Console.WriteLine("Invalid Password");
-                            LogInAccount();
-                            break;
+                            return isValid;
+                            //Console.WriteLine("Invalid Password");
+                            //LogInAccount();
                         }
                     }
                 }
@@ -86,7 +86,7 @@
             return isValid;
         }
 
-        int CheckBalance(string file)
+        public int CheckBalance(string file)
         {
             string line;
 

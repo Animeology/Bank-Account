@@ -2,7 +2,7 @@
 
 namespace Bank_Account
 {
-    public class BankTests
+    public class AccountTests
     {
         static void CheckAccount_WrongPassword_ReturnFalse()
         {

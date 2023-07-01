@@ -136,7 +136,7 @@ namespace BankAccount
             return balance;
         }
 
-        public void Balance(float balance, string file)
+        void Balance(float balance, string file)
         {
             Console.WriteLine("Your current balance is ${0}", balance);
 

@@ -111,17 +111,6 @@
             string userFile;
             string filePath;
 
-            if (isTesting)
-            {
-                Console.Write("Username:");
-                username = Console.ReadLine()!;
-
-                userFile = username + ".txt";
-                filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, userFile);
-
-                return username;
-            }
-
             Console.WriteLine("Hello, and Welcome to our Bank. Please input your desired Username and Password");
 
             Console.Write("Username:");
@@ -138,7 +127,7 @@
                 File.AppendAllText(userFile, password + Environment.NewLine);
                 File.AppendAllText(userFile, balance + Environment.NewLine);
 
-                Console.WriteLine("Thank you for creating your acount");
+                Console.WriteLine("Thank you for creating your account");
 
                 return username;
             }

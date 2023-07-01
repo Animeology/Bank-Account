@@ -134,7 +134,6 @@
             else
             {
                 Console.WriteLine("This username exists in our Bank Database. Please either choose another one.");
-                username = string.Empty;
                 CreateAccount();
             }
 

@@ -4,7 +4,7 @@ namespace BankAccount
 {
     public class Transaction
     {
-        bool isTesting = true;
+        bool isTesting = false;
 
         public float amount;
         public float balance;

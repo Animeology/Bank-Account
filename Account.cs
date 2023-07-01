@@ -8,7 +8,8 @@
         public string? username;
         public string? password;
         public string? userFile;
-        bool isTesting = true;
+
+        bool isTesting = false;
 
         public void LogInAccount()
         {

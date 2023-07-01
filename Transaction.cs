@@ -13,9 +13,9 @@ namespace BankAccount
             if (isTesting)
             {
                 balance += amount;
+                WriteBalanceBackToFile(balance, file);
                 return balance;
             }
-
 
             Console.WriteLine("How much do you want to deposit?");
 
@@ -71,32 +71,20 @@ namespace BankAccount
             return balance;
         }
 
-        static void WriteBalanceBackToFile(float balance, string file)
-        {
-            string path = "C:\\Users\\josep\\GitHub\\source\\Bank-Account\\bin\\Debug\\net7.0\\" + file;
-            string pattern = @"\d+";
 
-            string line;
-            using (StreamReader sr = new StreamReader(path))
+        public float Withdraw(float balance, string file)
+        {
+            if (isTesting)
             {
-                line = sr.ReadToEnd();
+                balance -= amount;
+                WriteBalanceBackToFile(balance, file);
+                return balance;
             }
 
-            Regex regex = new Regex(pattern);
-
-            using (StreamWriter sw = new StreamWriter(path))
-            {
-                string content = regex.Replace(line, balance.ToString());
-                sw.Write(content);
-            }
-        }
-
-        public void Withdraw(float balance, string file)
-        {
             Console.WriteLine("What amount would you like to withdraw from your account?");
 
             Console.Write("$");
-            float amount = Convert.ToInt32(Console.ReadLine());
+            amount = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("${0} to withdraw, Do you want to confirm that?", amount);
             Console.WriteLine("1: Yes");
@@ -144,6 +132,8 @@ namespace BankAccount
             }
 
             WriteBalanceBackToFile(balance, file);
+
+            return balance;
         }
 
         public void Balance(float balance, string file)
@@ -206,6 +196,25 @@ namespace BankAccount
                     Console.WriteLine("Invalid Input");
                     Interest(balance, file);
                     break;
+            }
+        }
+        static void WriteBalanceBackToFile(float balance, string file)
+        {
+            string path = "C:\\Users\\josep\\GitHub\\source\\Bank-Account\\bin\\Debug\\net7.0\\" + file;
+            string pattern = @"\d+";
+
+            string line;
+            using (StreamReader sr = new StreamReader(path))
+            {
+                line = sr.ReadToEnd();
+            }
+
+            Regex regex = new Regex(pattern);
+
+            using (StreamWriter sw = new StreamWriter(path))
+            {
+                string content = regex.Replace(line, balance.ToString());
+                sw.Write(content);
             }
         }
 

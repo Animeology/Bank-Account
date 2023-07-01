@@ -61,10 +61,43 @@ namespace Bank_Account
 
             DeleteMockFile(mockFile);
         }
+
+        static void Interest_Test()
+        {
+            Transaction mockTransaction = new Transaction();
+
+            float mockBalance = 100.0f;
+            float mockRate = 4.5f;
+            int mockYears = 5;
+
+            mockTransaction.balance = mockBalance;
+            mockTransaction.rate = mockRate;
+            mockTransaction.years = mockYears;
+
+            float expectedBalance = 2250.0f;
+
+            // Act
+            string mockFile = CreateMockFile(mockBalance);
+            float actualBalance = mockTransaction.Interest(mockBalance, mockFile);
+
+            // Assert
+            if (actualBalance == expectedBalance)
+            {
+                Console.WriteLine("Interest_Test succeeded");
+            }
+            else
+            {
+                Console.WriteLine("Interest_Test failed");
+            }
+
+            DeleteMockFile(mockFile);
+        }
+
         static void Main(string[] args)
         {
             Deposit_Test();
             Withdraw_Test();
+            Interest_Test();
         }
 
         static string CreateMockFile(float balance)

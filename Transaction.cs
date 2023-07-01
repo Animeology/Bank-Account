@@ -5,8 +5,14 @@ namespace BankAccount
     public class Transaction
     {
         bool isTesting = true;
+
         public float amount;
         public float balance;
+
+        public float rate;
+        public int years;
+        public float total;
+
 
         public float Deposit(float balance, string file)
         {
@@ -70,7 +76,6 @@ namespace BankAccount
 
             return balance;
         }
-
 
         public float Withdraw(float balance, string file)
         {
@@ -165,17 +170,23 @@ namespace BankAccount
             }
         }
 
-        public void Interest(float balance, string file)
+        public float Interest(float balance, string file)
         {
+            if(isTesting)
+            {
+                total = (balance * rate) * years;
+                return total;
+            }
+
             Console.WriteLine("What is your Interest Rate?");
             Console.Write("Rate: ");
-            float rate = float.Parse(Console.ReadLine()!);
+            rate = float.Parse(Console.ReadLine()!);
 
             Console.WriteLine("Input how many years do you want us to calculate your total money with the current interest rate.");
             Console.Write("Years: ");
-            int years = Convert.ToInt32(Console.ReadLine());
+            years = Convert.ToInt32(Console.ReadLine());
 
-            float total = (balance * rate) * years;
+            total = (balance * rate) * years;
 
             Console.WriteLine("Your total will be {0} in {1} year(s)", total, years);
 
@@ -197,6 +208,8 @@ namespace BankAccount
                     Interest(balance, file);
                     break;
             }
+
+            return total;
         }
         static void WriteBalanceBackToFile(float balance, string file)
         {

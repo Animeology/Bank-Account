@@ -4,7 +4,7 @@ namespace Bank_Account
 {
     public class AccountTests
     {
-        static void CheckAccount_WrongPassword_ReturnFalse()
+        static void CheckAccount_WrongPassword()
         {
             // Assign
             string expectedUsername = "anime";
@@ -26,7 +26,7 @@ namespace Bank_Account
             }
         }
 
-        static void CheckAccount_CorrectPassword_ReturnTrue()
+        static void CheckAccount_CorrectPassword()
         {
             // Assign
             string expectedUsername = "anime";
@@ -48,7 +48,7 @@ namespace Bank_Account
             }
         }
 
-        static void CheckBalance_CorrectBalance_ReturnTrue()
+        static void CheckBalance_CorrectBalance()
         {
             // Assign
             string expectedUsername = "anime";
@@ -70,7 +70,7 @@ namespace Bank_Account
             }
         }
 
-        static void CreateAccount_ValidUsername_ReturnTrue()
+        static void CreateAccount_ValidUsername()
         {
             // Assign
             string expectedUsername = "animeology";
@@ -105,13 +105,13 @@ namespace Bank_Account
 
         static void Main(string[] args)
         {
-            CheckAccount_WrongPassword_ReturnFalse();
+            CheckAccount_WrongPassword();
             Console.WriteLine();
-            CheckAccount_CorrectPassword_ReturnTrue();
+            CheckAccount_CorrectPassword();
             Console.WriteLine();
-            CheckBalance_CorrectBalance_ReturnTrue();
+            CheckBalance_CorrectBalance();
             Console.WriteLine();
-            CreateAccount_ValidUsername_ReturnTrue();
+            CreateAccount_ValidUsername();
             Console.WriteLine();
         }
     }

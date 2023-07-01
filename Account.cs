@@ -8,6 +8,7 @@
         public string? username;
         public string? password;
         public string? userFile;
+        bool isTesting = true;
 
         public void LogInAccount()
         {
@@ -70,9 +71,13 @@
                         }
                         if (password != line)
                         {
+                            if(isTesting)
+                            {
+                                break;
+                            }
                             Console.WriteLine("Invalid Password");
+                            LogInAccount();
                             break;
-                            //LogInAccount();
                         }
                     }
                 }
@@ -102,13 +107,28 @@
 
         public string CreateAccount()
         {
+            string username;
+            string userFile;
+            string filePath;
+
+            if (isTesting)
+            {
+                Console.Write("Username:");
+                username = Console.ReadLine()!;
+
+                userFile = username + ".txt";
+                filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, userFile);
+
+                return username;
+            }
+
             Console.WriteLine("Hello, and Welcome to our Bank. Please input your desired Username and Password");
 
             Console.Write("Username:");
-            string username = Console.ReadLine()!;
+            username = Console.ReadLine()!;
 
-            string userFile = username + ".txt";
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, userFile);
+            userFile = username + ".txt";
+            filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, userFile);
 
             if(!File.Exists(filePath))
             {
@@ -126,7 +146,7 @@
             {
                 Console.WriteLine("This username exists in our Bank Database. Please either choose another one.");
                 username = string.Empty;
-                //CreateAccount();
+                CreateAccount();
             }
 
             return username;

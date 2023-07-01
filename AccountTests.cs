@@ -7,7 +7,7 @@ namespace Bank_Account
         static void CheckAccount_WrongPassword_ReturnFalse()
         {
             // Assign
-            string username = "joseph";
+            string username = "anime";
             string password = "12345";
             string file = username + ".txt";
 
@@ -29,8 +29,8 @@ namespace Bank_Account
         static void CheckAccount_CorrectPassword_ReturnTrue()
         {
             // Assign
-            string username = "joseph";
-            string password = "nguyen";
+            string username = "anime";
+            string password = "anime";
             string file = username + ".txt";
 
             // Act
@@ -51,9 +51,9 @@ namespace Bank_Account
         static void CheckBalance_CorrectBalance_ReturnTrue()
         {
             // Assign
-            string username = "joseph";
+            string username = "anime";
             string file = username + ".txt";
-            int expectedBalance = 1000;
+            int expectedBalance = 90;
 
             // Act
             Account mockAcc = new Account();
@@ -73,14 +73,14 @@ namespace Bank_Account
         static void CreateAccount_ValidUsername_ReturnTrue()
         {
             // Assign
-            string username = "animeology";
+            string expectedUser = "animeology";
 
             // Act
             Account mockAcc = new Account();
             string actualUser = mockAcc.CreateAccount();
 
             // Assert
-            if(actualUser == username)
+            if(actualUser == expectedUser)
             {
                 Console.WriteLine("Test for CreateAccount_ValidUsername_ReturnTrue succeeded");
             }
@@ -88,28 +88,20 @@ namespace Bank_Account
             {
                 Console.WriteLine("Test for CreateAccount_ValidUsername_ReturnTrue failed");
             }
+
+            DeleteMockFile(expectedUser);
         }
 
-        static void CreateAccount_InValidUsername_ReturnFalse()
+        static void DeleteMockFile(string mockUsername)
         {
-            // Assign
-            string username = "animeology";
+            string mockFile = mockUsername + ".txt";
+            string filePath = Path.GetFullPath(mockFile);
 
-            // Act
-            Account mockAcc = new Account();
-            string actualUser = mockAcc.CreateAccount();
-
-            // Assert
-            if (actualUser != username)
+            if(File.Exists(filePath))
             {
-                Console.WriteLine("Test for CreateAccount_InValidUsername_ReturnFalse succeeded");
-            }
-            else
-            {
-                Console.WriteLine("Test for CreateAccount_InValidUsername_ReturnFalse failed");
+                File.Delete(filePath);
             }
         }
-
 
         static void Main(string[] args)
         {
@@ -120,8 +112,6 @@ namespace Bank_Account
             CheckBalance_CorrectBalance_ReturnTrue();
             Console.WriteLine();
             CreateAccount_ValidUsername_ReturnTrue();
-            Console.WriteLine();
-            CreateAccount_InValidUsername_ReturnFalse();
             Console.WriteLine();
         }
     }

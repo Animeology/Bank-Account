@@ -4,12 +4,23 @@ namespace BankAccount
 {
     public class Transaction
     {
-        void Deposit(int balance, string file)
+        bool isTesting = true;
+        public float amount;
+        public float balance;
+
+        public float Deposit(float balance, string file)
         {
+            if (isTesting)
+            {
+                balance += amount;
+                return balance;
+            }
+
+
             Console.WriteLine("How much do you want to deposit?");
 
             Console.Write("$");
-            int amount = Convert.ToInt32(Console.ReadLine());
+            amount = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("${0} to deposit, Do you want to confirm that?", amount);
             Console.WriteLine("1: Yes");
@@ -71,14 +82,16 @@ namespace BankAccount
                 string content = regex.Replace(line, balance.ToString());
                 sw.Write(content);
             }
+
+            return balance;
         }
 
-        void Withdraw(int balance, string file)
+        public void Withdraw(float balance, string file)
         {
             Console.WriteLine("What amount would you like to withdraw from your account?");
 
             Console.Write("$");
-            int amount = Convert.ToInt32(Console.ReadLine());
+            float amount = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("${0} to withdraw, Do you want to confirm that?", amount);
             Console.WriteLine("1: Yes");
@@ -144,7 +157,7 @@ namespace BankAccount
 
         }
 
-        void Balance(int balance, string file)
+        public void Balance(float balance, string file)
         {
             Console.WriteLine("Your current balance is ${0}", balance);
 
@@ -173,7 +186,7 @@ namespace BankAccount
             }
         }
 
-        void Interest(int balance, string file)
+        public void Interest(float balance, string file)
         {
             Console.WriteLine("What is your Interest Rate?");
             Console.Write("Rate: ");
@@ -207,7 +220,7 @@ namespace BankAccount
             }
         }
 
-        public void Menu(int balance, string file)
+        public void Menu(float balance, string file)
         {
             Console.WriteLine("Would you like to Deposit, Withdraw, Check your Balance, or Interest rate");
 
@@ -248,7 +261,7 @@ namespace BankAccount
             Console.WriteLine("Thank you for choosing our bank! We hope to see you again!");
         }
 
-        void ReturnToMenu(int balance, string file)
+        void ReturnToMenu(float balance, string file)
         {
             Console.WriteLine("Ok, returning back to the menu");
             Menu(balance, file);

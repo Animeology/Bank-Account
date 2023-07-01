@@ -16,7 +16,6 @@ namespace BankAccount
             Console.WriteLine("2: No");
 
             int confirm = Convert.ToInt32(Console.ReadLine());
-
             switch (confirm)
             {
                 case 1:
@@ -60,7 +59,6 @@ namespace BankAccount
             string pattern = @"\d+";
 
             string line;
-
             using (StreamReader sr = new StreamReader(path))
             {
                 line = sr.ReadToEnd();
@@ -131,7 +129,6 @@ namespace BankAccount
             string pattern = @"\d+";
 
             string line;
-
             using (StreamReader sr = new StreamReader(path))
             {
                 line = sr.ReadToEnd();
@@ -209,6 +206,7 @@ namespace BankAccount
                     break;
             }
         }
+
         public void Menu(int balance, string file)
         {
             Console.WriteLine("Would you like to Deposit, Withdraw, Check your Balance, or Interest rate");
@@ -255,6 +253,5 @@ namespace BankAccount
             Console.WriteLine("Ok, returning back to the menu");
             Menu(balance, file);
         }
-
     }
 }

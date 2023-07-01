@@ -66,6 +66,13 @@ namespace BankAccount
                     break;
             }
 
+            WriteBalanceBackToFile(balance, file);
+
+            return balance;
+        }
+
+        static void WriteBalanceBackToFile(float balance, string file)
+        {
             string path = "C:\\Users\\josep\\GitHub\\source\\Bank-Account\\bin\\Debug\\net7.0\\" + file;
             string pattern = @"\d+";
 
@@ -82,8 +89,6 @@ namespace BankAccount
                 string content = regex.Replace(line, balance.ToString());
                 sw.Write(content);
             }
-
-            return balance;
         }
 
         public void Withdraw(float balance, string file)
@@ -138,23 +143,7 @@ namespace BankAccount
                     break;
             }
 
-            string path = "C:\\Users\\josep\\GitHub\\source\\Bank-Account\\bin\\Debug\\net7.0\\" + file;
-            string pattern = @"\d+";
-
-            string line;
-            using (StreamReader sr = new StreamReader(path))
-            {
-                line = sr.ReadToEnd();
-            }
-
-            Regex regex = new Regex(pattern);
-
-            using (StreamWriter sw = new StreamWriter(path))
-            {
-                string content = regex.Replace(line, balance.ToString());
-                sw.Write(content);
-            }
-
+            WriteBalanceBackToFile(balance, file);
         }
 
         public void Balance(float balance, string file)

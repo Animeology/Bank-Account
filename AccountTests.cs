@@ -7,13 +7,13 @@ namespace Bank_Account
         static void CheckAccount_WrongPassword_ReturnFalse()
         {
             // Assign
-            string username = "anime";
-            string password = "12345";
-            string file = username + ".txt";
+            string expectedUsername = "anime";
+            string expectedPassword = "12345";
+            string expectedFile = expectedUsername + ".txt";
 
             // Act
             Account mockAcc = new Account();
-            bool isInvalid = mockAcc.CheckAccount(username, password, file);
+            bool isInvalid = mockAcc.CheckAccount(expectedUsername, expectedPassword, expectedFile);
 
             // "Assert"
             if(isInvalid)
@@ -29,13 +29,13 @@ namespace Bank_Account
         static void CheckAccount_CorrectPassword_ReturnTrue()
         {
             // Assign
-            string username = "anime";
-            string password = "anime";
-            string file = username + ".txt";
+            string expectedUsername = "anime";
+            string expectedPassword = "anime";
+            string expectedFile = expectedUsername + ".txt";
 
             // Act
             Account mockAcc = new Account();
-            bool isValid = mockAcc.CheckAccount(username, password, file);
+            bool isValid = mockAcc.CheckAccount(expectedUsername, expectedPassword, expectedFile);
 
             // "Assert"
             if (isValid)
@@ -51,13 +51,13 @@ namespace Bank_Account
         static void CheckBalance_CorrectBalance_ReturnTrue()
         {
             // Assign
-            string username = "anime";
-            string file = username + ".txt";
+            string expectedUsername = "anime";
+            string expectedFile = expectedUsername + ".txt";
             int expectedBalance = 90;
 
             // Act
             Account mockAcc = new Account();
-            int actualBalance = mockAcc.CheckBalance(file);
+            int actualBalance = mockAcc.CheckBalance(expectedFile);
 
             // Assert
             if(actualBalance == expectedBalance)
@@ -73,14 +73,14 @@ namespace Bank_Account
         static void CreateAccount_ValidUsername_ReturnTrue()
         {
             // Assign
-            string expectedUser = "animeology";
+            string expectedUsername = "animeology";
 
             // Act
             Account mockAcc = new Account();
             string actualUser = mockAcc.CreateAccount();
 
             // Assert
-            if(actualUser == expectedUser)
+            if(actualUser == expectedUsername)
             {
                 Console.WriteLine("Test for CreateAccount_ValidUsername_ReturnTrue succeeded");
             }
@@ -89,7 +89,7 @@ namespace Bank_Account
                 Console.WriteLine("Test for CreateAccount_ValidUsername_ReturnTrue failed");
             }
 
-            DeleteMockFile(expectedUser);
+            DeleteMockFile(expectedUsername);
         }
 
         static void DeleteMockFile(string mockUsername)

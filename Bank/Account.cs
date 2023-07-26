@@ -11,7 +11,7 @@ namespace Bank_Account.Bank
         public string? password;
         public string? userFile;
 
-        bool isTesting = false;
+        bool isTesting = true;
 
         public void LogInAccount()
         {
@@ -113,6 +113,13 @@ namespace Bank_Account.Bank
             string username;
             string userFile;
             string filePath;
+            bool isTesting = true;
+
+            if(isTesting)
+            {
+                username = "animeology";
+                return username;
+            }
 
             Console.WriteLine("Hello, and Welcome to our Bank. Please input your desired Username and Password");
 

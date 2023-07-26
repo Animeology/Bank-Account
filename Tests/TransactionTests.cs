@@ -1,6 +1,6 @@
 ﻿using BankAccount;
 
-namespace Bank_Account
+namespace Bank_Account.Tests
 {
     public class TransactionTests
     {
@@ -21,7 +21,7 @@ namespace Bank_Account
             float actualBalance = mockTransaction.Deposit(mockBalance, mockFile);
 
             // Assert
-            if(actualBalance == expectedBalance)
+            if (actualBalance == expectedBalance)
             {
                 Console.WriteLine("Deposit_Test succeeded");
             }

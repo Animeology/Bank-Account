@@ -1,4 +1,6 @@
-﻿namespace BankAccount
+﻿using BankAccount;
+
+namespace Bank_Account.Bank
 {
     public class Account
     {
@@ -59,7 +61,7 @@
             bool isValid = false;
             string line;
 
-            if ((username + ".txt") == file)
+            if (username + ".txt" == file)
             {
                 using (StreamReader sr = new StreamReader(file))
                 {
@@ -72,7 +74,7 @@
                         }
                         if (password != line)
                         {
-                            if(isTesting)
+                            if (isTesting)
                             {
                                 break;
                             }
@@ -120,7 +122,7 @@
             userFile = username + ".txt";
             filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, userFile);
 
-            if(!File.Exists(filePath))
+            if (!File.Exists(filePath))
             {
                 Console.Write("Password:");
                 string password = Console.ReadLine()!;

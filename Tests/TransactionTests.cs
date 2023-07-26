@@ -21,15 +21,10 @@ namespace Bank_Account.Tests
             float actualBalance = mockTransaction.Deposit(mockBalance, mockFile);
 
             // Assert
-            if (actualBalance == expectedBalance)
+            if (actualBalance != expectedBalance)
             {
-                Console.WriteLine("Deposit_Test succeeded");
+                throw new Exception("Deposit_Test failed");
             }
-            else
-            {
-                Console.WriteLine("Deposit_Test failed");
-            }
-
             DeleteMockFile(mockFile);
         }
 
@@ -50,13 +45,9 @@ namespace Bank_Account.Tests
             float actualBalance = mockTransaction.Withdraw(mockBalance, mockFile);
 
             // Assert
-            if (actualBalance == expectedBalance)
+            if (actualBalance != expectedBalance)
             {
-                Console.WriteLine("Withdraw_Test succeeded");
-            }
-            else
-            {
-                Console.WriteLine("Withdraw_Test failed");
+                throw new Exception("Withdraw_Test failed");
             }
 
             DeleteMockFile(mockFile);
@@ -81,13 +72,9 @@ namespace Bank_Account.Tests
             float actualBalance = mockTransaction.Interest(mockBalance, mockFile);
 
             // Assert
-            if (actualBalance == expectedBalance)
+            if (actualBalance != expectedBalance)
             {
-                Console.WriteLine("Interest_Test succeeded");
-            }
-            else
-            {
-                Console.WriteLine("Interest_Test failed");
+                throw new Exception("Interest_Test failed");
             }
 
             DeleteMockFile(mockFile);

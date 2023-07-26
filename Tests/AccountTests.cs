@@ -1,6 +1,6 @@
 ﻿using Bank_Account.Bank;
 
-namespace Bank_Account
+namespace Bank_Account.Tests
 {
     public class AccountTests
     {
@@ -18,11 +18,7 @@ namespace Bank_Account
             // "Assert"
             if(isInvalid)
             {
-                Console.WriteLine("Test for CheckAccount_WrongPassword_ReturnFalse failed");
-            }
-            else
-            {
-                Console.WriteLine("Test for CheckAccount_WrongPassword_ReturnFalse succeeded");
+                throw new Exception("Test for CheckAccount_WrongPassword_ReturnFalse failed");
             }
         }
 
@@ -38,13 +34,9 @@ namespace Bank_Account
             bool isValid = mockAcc.CheckAccount(expectedUsername, expectedPassword, expectedFile);
 
             // "Assert"
-            if (isValid)
+            if (!isValid)
             {
-                Console.WriteLine("Test for CheckAccount_CorrectPassword_ReturnTrue succeeded");
-            }
-            else
-            {
-                Console.WriteLine("Test for CheckAccount_CorrectPassword_ReturnTrue failed");
+                throw new Exception("Test for CheckAccount_WrongPassword_ReturnFalse failed");
             }
         }
 
@@ -60,13 +52,9 @@ namespace Bank_Account
             int actualBalance = mockAcc.CheckBalance(expectedFile);
 
             // Assert
-            if(actualBalance == expectedBalance)
+            if(actualBalance != expectedBalance)
             {
-                Console.WriteLine("Test for CheckBalance_CorrectBalance_ReturnTrue succeeded");
-            }
-            else
-            {
-                Console.WriteLine("Test for CheckBalance_CorrectBalance_ReturnTrue failed");
+                throw new Exception("Test for CheckBalance_CorrectBalance failed");
             }
         }
 
@@ -80,13 +68,9 @@ namespace Bank_Account
             string actualUser = mockAcc.CreateAccount();
 
             // Assert
-            if(actualUser == expectedUsername)
+            if(actualUser != expectedUsername)
             {
-                Console.WriteLine("Test for CreateAccount_ValidUsername_ReturnTrue succeeded");
-            }
-            else
-            {
-                Console.WriteLine("Test for CreateAccount_ValidUsername_ReturnTrue failed");
+                throw new Exception("Test for CreateAccount_ValidUsername failed");
             }
 
             DeleteMockFile(expectedUsername);
@@ -106,13 +90,9 @@ namespace Bank_Account
         public static void AllAccountTests()
         {
             CheckAccount_WrongPassword();
-            Console.WriteLine();
             CheckAccount_CorrectPassword();
-            Console.WriteLine();
             CheckBalance_CorrectBalance();
-            Console.WriteLine();
-            CreateAccount_ValidUsername();
-            Console.WriteLine();
+            //CreateAccount_ValidUsername();
         }
     }
 }

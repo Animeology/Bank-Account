@@ -93,7 +93,7 @@ namespace Bank_Account.Tests
             DeleteMockFile(mockFile);
         }
 
-        static void Main(string[] args)
+        public static void AllTransactionTests()
         {
             Deposit_Test();
             Withdraw_Test();

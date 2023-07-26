@@ -6,7 +6,7 @@
     <RootNamespace>Bank_Account</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>Bank</StartupObject>
+    <StartupObject>Bank_Account.TheBank</StartupObject>
   </PropertyGroup>
 
 </Project>

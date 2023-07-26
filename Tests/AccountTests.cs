@@ -103,7 +103,7 @@ namespace Bank_Account
             }
         }
 
-        static void Main(string[] args)
+        public static void AllAccountTests()
         {
             CheckAccount_WrongPassword();
             Console.WriteLine();

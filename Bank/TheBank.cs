@@ -1,7 +1,7 @@
 ﻿namespace Bank_Account
 {
-    using Tests;
     using Bank;
+    using Tests;
 
     public class TheBank
     {

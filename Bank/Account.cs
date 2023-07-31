@@ -1,7 +1,7 @@
-﻿using BankAccount;
-
-namespace Bank_Account.Bank
+﻿namespace Bank_Account.Bank
 {
+    using BankAccount;
+
     public class Account
     {
         Transaction transaction = new Transaction();
@@ -115,7 +115,7 @@ namespace Bank_Account.Bank
             string filePath;
             bool isTesting = true;
 
-            if(isTesting)
+            if (isTesting)
             {
                 username = "animeology";
                 return username;

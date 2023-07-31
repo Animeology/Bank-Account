@@ -92,7 +92,7 @@ namespace Bank_Account.Tests
             CheckAccount_WrongPassword();
             CheckAccount_CorrectPassword();
             CheckBalance_CorrectBalance();
-            //CreateAccount_ValidUsername();
+            CreateAccount_ValidUsername();
         }
     }
 }

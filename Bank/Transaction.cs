@@ -28,7 +28,7 @@ namespace BankAccount
             Console.Write("$");
             amount = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("${0} to deposit, Do you want to confirm that?", amount);
+            Console.WriteLine($"{amount} to deposit, Do you want to confirm that?");
             Console.WriteLine("1: Yes");
             Console.WriteLine("2: No");
 
@@ -91,7 +91,7 @@ namespace BankAccount
             Console.Write("$");
             amount = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("${0} to withdraw, Do you want to confirm that?", amount);
+            Console.WriteLine($"{amount} to withdraw, Do you want to confirm that?");
             Console.WriteLine("1: Yes");
             Console.WriteLine("2: No");
 
@@ -188,7 +188,7 @@ namespace BankAccount
 
             total = (balance * rate) * years;
 
-            Console.WriteLine("Your total will be {0} in {1} year(s)", total, years);
+            Console.WriteLine($"Your total will be {total} in {years} year(s)");
 
             Console.WriteLine("Would you like to calculate again?");
             Console.WriteLine("1: Yes");
